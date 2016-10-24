@@ -1,0 +1,32 @@
+<ion-view title="Register" ng-controller="UserController as user">
+    <ion-content padding="true" class="has-header">
+        <h1 style="color:#000000;text-align:center;">Welcome to Bice.</h1>
+        <form class="list">
+            <label class="item item-input">
+                <span class="input-label">First Name</span>
+                <input type="text" placeholder="Full name" ng-model="user.firstName">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Last Name</span>
+                <input type="text" placeholder="Last name" ng-model="user.lastName">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Email</span>
+                <input type="email" placeholder="Email" ng-model='user.email'>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Phone Number</span>
+                <input type="text" placeholder="Phone number" ng-model='user.phoneNumber'>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Password</span>
+                <input type="password" placeholder="Enter your password" ng-model='user.password'>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Confirm Password</span>
+                <input type="password" placeholder="Confirm your password" ng-model='user.passwordConfirmation'>
+            </label>
+        </form>
+        <input type="submit" ng-click="createUser(user)" value="Register" class="button button-positive button-block"/>
+    </ion-content>
+</ion-view>
