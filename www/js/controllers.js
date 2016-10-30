@@ -65,11 +65,31 @@ angular.module('bice.controllers', ['ngResource'])
     (errorResponse) => {
       alert('There was an error processing your request.');
     });
-
-
   };
 })
 
-.controller('BikesController', function($scope, $http, $state) {
+.controller('BikesController', function($scope, $state, $resource) {
+  $scope.registerBike = function(bike) {
 
+    let Bike = $resource('http://localhost:3000/api/v1/bikes');
+
+    // TODO: Bike Adapter
+    var newBike = new Bike({
+      bike: {
+        name: bike.name,
+        model: bike.model,
+        brand: bike.brand,
+        serial_number: bike.serialNumber,
+        place_of_purchase: bike.placeOfPurchase
+      }
+    });
+
+    newBike.$save().then(() => {
+      alert('Bike successfully registered!');
+      $state.go('app.myBikes');
+    },
+    (errorResponse) => {
+      alert('There was an error processing your request.');
+    });
+  }
 });

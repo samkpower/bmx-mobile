@@ -41,6 +41,16 @@ angular.module('bice', ['ionic', 'bice.controllers', 'ngResource', 'ngLodash'])
     }
   })
 
+  .state('app.registerMyBike', {
+    url: '/registerMyBike',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/registerMyBike.html',
+        controller: 'BikesController'
+      }
+    }
+  })
+
   .state('app.myBikes', {
     url: '/myBikes',
     views: {
