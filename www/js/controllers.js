@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('bice.controllers', ['ngResource'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -41,16 +41,55 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+.controller('UserController', function($scope, $state, $interpolate, $resource, lodash) {
+  $scope.createUser = function(user) {
+
+    let User = $resource('http://localhost:3000/api/v1/users');
+
+    // TODO: User Adapter
+    var newUser = new User({
+      user: {
+        first_name: user.firstName,
+        last_name: user.lastName,
+        email: user.email,
+        password: user.password,
+        password_confirmation: user.passwordConfirmation,
+        phone: user.phoneNumber
+      }
+    });
+
+    newUser.$save().then(() => {
+      alert('User successfully created!');
+      $state.go('app.myBikes');
+    },
+    (errorResponse) => {
+      alert('There was an error processing your request.');
+    });
+  };
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('BikesController', function($scope, $state, $resource) {
+  $scope.registerBike = function(bike) {
+
+    let Bike = $resource('http://localhost:3000/api/v1/bikes');
+
+    // TODO: Bike Adapter
+    var newBike = new Bike({
+      bike: {
+        name: bike.name,
+        model: bike.model,
+        brand: bike.brand,
+        serial_number: bike.serialNumber,
+        place_of_purchase: bike.placeOfPurchase
+      }
+    });
+
+    newBike.$save().then(() => {
+      alert('Bike successfully registered!');
+      $state.go('app.myBikes');
+    },
+    (errorResponse) => {
+      alert('There was an error processing your request.');
+    });
+  }
 });
