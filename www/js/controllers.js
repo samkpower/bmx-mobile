@@ -68,7 +68,7 @@ angular.module('bice.controllers', ['ngResource'])
   };
 })
 
-.controller('BikesController', function($scope, $state, $resource) {
+.controller('NewBikeController', function($scope, $state, $resource) {
   $scope.registerBike = function(bike) {
 
     let Bike = $resource('http://localhost:3000/api/v1/bikes');
@@ -91,5 +91,17 @@ angular.module('bice.controllers', ['ngResource'])
     (errorResponse) => {
       alert('There was an error processing your request.');
     });
-  }
+  };
+})
+
+.controller('MyBikesController', function($scope, $resource) {
+  $scope.bikes = [];
+  let Bike = $resource('http://localhost:3000/api/v1/bikes.json');
+  Bike.query((bikes) => { $scope.bikes = bikes; });
+})
+
+.controller('MyBikeController', function($scope, $resource) {
+  $scope.bike = [];
+  let Bike = $resource('http://localhost:3000/api/v1/bikes/1.json');
+  Bike.get((bike) => { $scope.bike = bike; });
 });

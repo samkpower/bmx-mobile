@@ -46,7 +46,7 @@ angular.module('bice', ['ionic', 'bice.controllers', 'ngResource', 'ngLodash'])
     views: {
       'menuContent': {
         templateUrl: 'templates/registerMyBike.html',
-        controller: 'BikesController'
+        controller: 'NewBikeController'
       }
     }
   })
@@ -56,7 +56,7 @@ angular.module('bice', ['ionic', 'bice.controllers', 'ngResource', 'ngLodash'])
     views: {
       'menuContent': {
         templateUrl: 'templates/myBikes.html',
-        controller: 'BikesController'
+        controller: 'MyBikesController'
       }
     }
   })
@@ -66,7 +66,7 @@ angular.module('bice', ['ionic', 'bice.controllers', 'ngResource', 'ngLodash'])
     views: {
       'menuContent': {
         templateUrl: 'templates/myBike.html',
-        controller: 'BikesController'
+        controller: 'MyBikeController'
       }
     }
   });

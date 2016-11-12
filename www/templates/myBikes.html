@@ -1,18 +1,12 @@
-<ion-view title="My Bikes" hide-back-button="true">
+<ion-view title="My Bikes" hide-back-button="true" ng-controller="NewBikeController">
     <ion-content padding="true" class="has-header">
         <div class="button-bar"></div>
-        <ion-list>
+        <ion-list ng-repeat="bike in bikes">
             <ion-item class="item-thumbnail-left item-icon-right" ui-sref="app.myBike">
-                <img src="img/ionic.png">
-                <h2>MU28343</h2>
-                <p style="white-space:normal;">Grey Nakamura</p>
+                <img src="img/bike-flying-pidgeon.jpg">
+                <h2>{{bike.name}}</h2>
+                <p style="white-space:normal;">{{bike.model}} {{bike.brand}}</p>
                 <i class="icon ion-android-arrow-dropright"></i>
-            </ion-item>
-            <ion-item class="item-thumbnail-left item-icon-right assertive">
-                <img src="img/ionic.png">
-                <h2>BB88997</h2>
-                <p style="white-space:normal;">Red Schwinn</p>
-                <i class="icon ion-alert"></i>
             </ion-item>
         </ion-list>
         <a href="#/app/registerMyBike" class="button button-positive button-block">Register a New Bike</a>
